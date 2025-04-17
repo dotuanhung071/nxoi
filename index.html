@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trang Người Dùng</title>
+</head>
+<body>
+  <h1>Biểu mẫu Google</h1>
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSewL85-Ij_CIpeXLcTd5qDPiChIx5wgbygDn0or_zZgujIndw/viewform?embedded=true" width="640" height="1288" frameborder="0" marginheight="0" marginwidth="0">Đang tải…</iframe>
+
+  <h2>Bình luận</h2>
+  <form id="commentForm">
+    <input type="text" id="name" placeholder="Tên của bạn" required /> <br />
+    <textarea id="comment" placeholder="Viết bình luận..." required></textarea><br />
+    <button type="submit">Gửi</button>
+  </form>
+
+  <div id="commentList"></div>
+
+  <script>
+    const form = document.getElementById('commentForm');
+    const commentList = document.getElementById('commentList');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const comment = document.getElementById('comment').value;
+      const div = document.createElement('div');
+      div.innerHTML = `<strong>${name}</strong>: ${comment}`;
+      commentList.appendChild(div);
+      form.reset();
+    });
+  </script>
+</body>
+</html>

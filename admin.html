@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trang Quản Trị</title>
+</head>
+<body>
+  <h1>Trang Quản Trị</h1>
+
+  <div id="login">
+    <p>Nhập mật khẩu để vào trang quản trị:</p>
+    <input type="password" id="password" />
+    <button onclick="checkPassword()">Đăng nhập</button>
+    <p id="loginMessage"></p>
+  </div>
+
+  <div id="adminPanel" style="display:none">
+    <h2>Đăng bài viết</h2>
+    <textarea id="newPost" placeholder="Viết nội dung bài..." rows="5"></textarea><br />
+    <button onclick="postContent()">Đăng bài</button>
+    <div id="posts"></div>
+
+    <h2>Xem bình luận (chỉ tạm thời hiển thị nội bộ)</h2>
+    <div id="fakeComments">
+      <p><strong>User1</strong>: Bình luận mẫu 1</p>
+      <p><strong>User2</strong>: Bình luận mẫu 2</p>
+    </div>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const pw = document.getElementById('password').value;
+      if (pw === '191220122') {
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('adminPanel').style.display = 'block';
+      } else {
+        document.getElementById('loginMessage').textContent = 'Sai mật khẩu!';
+      }
+    }
+
+    function postContent() {
+      const content = document.getElementById('newPost').value;
+      const div = document.createElement('div');
+      div.innerHTML = `<p>${content}</p><hr />`;
+      document.getElementById('posts').prepend(div);
+      document.getElementById('newPost').value = '';
+    }
+  </script>
+</body>
+</html>
